@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="layoutPadrao">
+<head>
+<title>Pesquisa de Titulo</title>
+</head>
+	<section layout:fragment="conteudo">
+	<header>
+		<nav class="navbar navbar-dark bg-dark">
+		  <a class="navbar-brand" href="#">
+		    <img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""></img>
+		    JeG
+		  </a>
+		</nav>
+	</header>
+	<div class="panel panel-default" >
+		<div class="panel-heading">
+			<h1 class="panel-title">Pesquisa de Titulos</h1>
+		</div>
+	</div>
+	<div class="panel-body">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th class="text-center">#</th>
+					<th class="text-center">Descrição</th>
+					<th class="text-left">Data do Pagamento</th>
+					<th class="text-left ">Valor</th>
+					<th class="text-left">Status</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th colspan="6">
+						Nenhum titulo foi encontrado !!!
+					</th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</section>
+
+</html>

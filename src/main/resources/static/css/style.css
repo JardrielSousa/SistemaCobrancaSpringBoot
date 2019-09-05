@@ -1,0 +1,13 @@
+@charset "ISO-8859-1";
+
+.navbar-brand{
+	padding-top: 12px;
+}
+.card{
+	margin-left: 25px;
+	margin-right: 25px;
+}
+.alert{
+	margin-left: 25px;
+	margin-right: 25px;
+}

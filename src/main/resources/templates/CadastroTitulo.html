@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="layoutPadrao">
+
+<head>
+<title>Cadastro de Titulo</title>
+</head>
+<body>
+	<section layout:fragment="conteudo">
+		<form class="form-horizontal" action="/titulos" method="POST" >
+	<h1>Cadastro de Titulos</h1>
+	<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
+		<span  th:text="${mensagem}"></span>
+	</div>
+		<div class="card">
+		  <h5 class="card-header">Novo Titulo</h5>
+		  <div class="card-body">
+			
+			  <div class="form-row">
+			    <div class="form-group col-sm-5">
+			      <label for="inputEmail4 control-label">Descrição</label>
+			      <input type="text" class="form-control" id="descricao" name="descricao"></input>
+			    </div>
+			  </div>
+			    <div class="form-row">
+			    <div class="form-group col-sm-3">
+			      <label for="inputEmail4">Data de Vencimento</label>
+			      <input type="text" class="form-control" id="dataVencimento" name="dataVencimento"/>
+			    </div>
+			  </div>
+			    <div class="form-row">
+			    <div class="form-group col-sm-3">
+			      <label for="number">valor</label>
+			      <input type="text" class="form-control" id="valor" name="valor"/>
+			    </div>
+			  </div>
+			  <div class="form-row">
+			    <div class="form-group col-sm-3">
+			      <label for="status">Status</label>
+			      <select id="status" class="form-control" name="status">
+			        <option selected="selected">Escolher...</option>
+			        <option th:each="status : ${todosOsTitulos}" th:value="${status}" th:text="${status.descricao}"></option>
+			      </select>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="form-check col-sm-3">
+			      <input class="form-check-input" type="checkbox" id="gridCheck"/>
+			      <label class="form-check-label" for="gridCheck">
+			        Clique em mim
+			      </label>
+			    </div>
+			  </div>
+			  <button type="submit" class="btn btn-primary">Entrar</button>
+		   </div>
+		   </div>
+	</form>
+	</section>	
+</body>
+</html>
