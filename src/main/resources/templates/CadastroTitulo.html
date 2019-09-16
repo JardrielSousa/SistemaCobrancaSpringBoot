@@ -6,11 +6,21 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorator="layoutPadrao">
 
 <head>
+<meta charset="UTF-8"></meta>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="css/style.css" /></link>
 <title>Cadastro de Titulo</title>
 </head>
-<body>
+<header>
+	<nav class="navbar navbar-dark bg-dark">
+		<a class="navbar-brand" href="#"> <img
+			src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30"
+			height="30" class="d-inline-block align-top" alt=""></img> JeG
+		</a>
+	</nav>
+</header>
 	<section layout:fragment="conteudo">
-		<form class="form-horizontal" action="/titulos" method="POST" >
+		<form class="form-horizontal" action="/titulos" method="post" >
 	<h1>Cadastro de Titulos</h1>
 	<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
 		<span  th:text="${mensagem}"></span>

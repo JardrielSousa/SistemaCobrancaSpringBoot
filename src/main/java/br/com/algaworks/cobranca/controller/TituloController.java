@@ -33,9 +33,13 @@ public class TituloController {
 		mv.addObject("mensagem","Titulo Cadastrado com sucesso !");
 		return mv;
 	}
+
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView pesquisar() {
-		return new ModelAndView(PESQUISA_TITULO);
+		List<Titulo> todosTitulos = titulos.findAll();
+		ModelAndView mv = new ModelAndView(PESQUISA_TITULO);
+		mv.addObject("titulo", todosTitulos);
+		return mv;
 	}
 	@ModelAttribute("todosOsTitulos")
 	public List<StatusTitulo> todosStatusList(){
