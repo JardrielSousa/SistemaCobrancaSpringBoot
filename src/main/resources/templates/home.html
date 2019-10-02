@@ -1,67 +1,68 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" 
-xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorator="layoutPadrao">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layoutPadrao">
 
 <head>
 <meta charset="UTF-8"></meta>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></link>
-	<link rel="stylesheet" type="text/css" href="css/style.css" /></link>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+</link>
 <title>Pesquisa de Titulo</title>
 </head>
-<header>
-	<nav class="navbar navbar-dark bg-dark">
-		<a class="navbar-brand" href="#"> <img
-			src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30"
-			height="30" class="d-inline-block align-top" alt=""></img> JeG
-		</a>
-	</nav>
-</header>
-	<section layout:fragment="conteudo">
-	<div class="panel panel-default" >
-		<div class="panel-heading">
-			<div class="clear-fix">
-				<h3 class="panel-title onTituloPanel">Pesquisa de Titulos</h3>
-				<a class="btn btn-link onlinkPanel" href="/titulos/novo">Novo Titulo</a>
-			</div>
+<header> <nav class="navbar navbar-dark bg-dark"> <a
+	class="navbar-brand" href="#"> <img
+	src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30"
+	class="d-inline-block align-top" alt=""></img> JeG
+</a> </nav> </header>
+<section layout:fragment="conteudo">
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<div class="clear-fix">
+			<h3 class="panel-title onTituloPanel">Pesquisa de Titulos</h3>
+			<a class="btn btn-link onlinkPanel" href="/titulos/novo">Novo
+				Titulo</a>
 		</div>
 	</div>
-	<div class="panel-body">
-		<table class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th class="text-center">#</th>
-					<th class="text-center">Descrição</th>
-					<th class="text-center">Data do Pagamento</th>
-					<th class="text-center ">Valor</th>
-					<th class="text-center">Status</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="titulo : ${titulo}">
-					<td class="text-center" th:text="${titulo.codigo}">1</td>
-					<td class="text-center" th:text="${titulo.descricao}">text</td>
-					<td class="text-center" th:text="${{titulo.dataVencimento}}">teste</td>
-					<td class="text-center" th:text="${titulo.valor}">000</td>
-					<td class="text-center">
-						<span class="label" th:text="${titulo.status.descricao}" 
-						th:classappend="${(titulo.pendente) ? 
+</div>
+<div class="panel-body">
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th class="text-center">#</th>
+				<th class="text-center">Descrição</th>
+				<th class="text-center">Data do Pagamento</th>
+				<th class="text-center ">Valor</th>
+				<th class="text-center">Status</th>
+				<th class="col-md-1"></th>
+			</tr>
+		</thead>
+		<tbody> 
+			<tr th:each="titulo : ${titulo}">
+				<td class="text-center" th:text="${titulo.codigo}">1</td>
+				<td class="text-center" th:text="${titulo.descricao}">text</td>
+				<td class="text-center" th:text="${{titulo.dataVencimento}}">teste</td>
+				<td class="text-center" th:text="${titulo.valor}">000</td>
+				<td class="text-center"><span class="label"
+					th:text="${titulo.status.descricao}"
+					th:classappend="${(titulo.pendente) ? 
 					'label-danger' : 'label-sucess'}"></span>
-					</td>
-					
-				</tr>
-				<tr>
-					<th colspan="6" th:if="${#lists.isEmpty(titulo)}">
-						Nenhum titulo foi encontrado !!!
-					</th>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	</section>
+				</td>
+				<td class="text-center">
+				<a class="btn btn-link btn-xs" th:href="@{/titulos/{codigo} (codigo=${titulo.codigo})}">
+				editar
+				</a></td>
+			</tr>
+			<tr>
+				<th colspan="6" th:if="${#lists.isEmpty(titulo)}">Nenhum titulo
+					foi encontrado !!!</th>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</section>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.dev.js"></script>
 </html>
