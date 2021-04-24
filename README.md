@@ -1,8 +1,11 @@
-# SistemaCobrancaSpringBoot
+# Sistema Cobranca Spring Boot
 Sistema simples de cobranca usando spring boot 
- mavem 
- spring boot 
- js e css
- java
- Jpa (Pesistencia)
- h2 (Banco de Dados)
+
+## Tecnologias usadas
+ - spring boot 
+ - js e css
+ - java
+ - Jpa / hibernate(Pesistencia)
+ - h2 (Banco de Dados)
+ - maven
+
