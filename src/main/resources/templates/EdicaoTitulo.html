@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layoutPadrao">
+
+<head>
+	<meta charset="UTF-8">
+	</meta>
+	<link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}" />
+	<title>Edição de Titulo</title>
+</head>
+<header>
+	<nav class="navbar navbar-dark bg-dark">
+		<a class="navbar-brand" href="/titulos"> <img src="/img/icon.svg" width="50" height="50"
+				class="d-inline-block align-top" alt=""></img> JeG
+		</a>
+	</nav>
+</header>
+<section layout:fragment="conteudo">
+	<form class="form-horizontal" th:object="${titulo}" th:action="@{/titulos/{codigo}(codigo=${titulo.codigo})}" th:method="PUT">
+		<h1>Edição de Titulos</h1>
+		<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
+			<span th:text="${mensagem}"></span>
+		</div>
+		<div class="card">
+			<h5 class="card-header">Editar Titulo</h5>
+			<div class="card-body">
+					<input hidden th:field="*{codigo}" name="codigo">
+					<div class="form-row" >
+						<div class="form-group col-sm-5">
+							<label for="inputEmail4 control-label">Descrição</label> 
+							<input type="text" th:field="*{descricao}" class="form-control" id="descricao" name="descricao"></input>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-sm-3">
+							<label for="inputEmail4">Data de Vencimento</label>
+							<input type="text" th:field="*{dataVencimento}" class="form-control"	id="dataVencimento" name="dataVencimento" />
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-sm-3">
+							<label for="number">valor</label>
+							<input type="text" th:field="*{valor}" class="form-control" id="valor"
+								name="valor" />
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-sm-3">
+							<label for="status">Status</label> 
+							<select id="status"  th:object="${status}" class="form-control" name="status">
+								<option selected="selected" >Escolher...</option>
+								<option th:each="status : ${todosOsTitulos}" th:value="${status}"
+									th:text="${status.descricao}"></option>
+							</select>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary">Editar</button>
+			</div>
+		</div>
+	</form>
+</section>
+</body>
+
+</html>

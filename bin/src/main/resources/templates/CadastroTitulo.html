@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layoutPadrao">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layoutPadrao">
 
 <head>
-	<meta charset="UTF-8">
-	</meta>
-	<link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
-	<link rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}" />
-	<title>Cadastro de Titulo</title>
+<meta charset="UTF-8"></meta>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="css/style.css" /></link>
+<title>Cadastro de Titulo</title>
 </head>
 <header>
 	<nav class="navbar navbar-dark bg-dark">
-		<a class="navbar-brand" href="/titulos"> <img src="/img/icon.svg" width="50" height="50"
-				class="d-inline-block align-top" alt=""></img> JeG
+		<a class="navbar-brand" href="#"> <img
+			src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30"
+			height="30" class="d-inline-block align-top" alt=""></img> JeG
 		</a>
 	</nav>
 </header>
-<section layout:fragment="conteudo">
+	<section layout:fragment="conteudo">
 	<form class="form-horizontal" action="/titulos" method="POST">
 		<h1>Cadastro de Titulos</h1>
-		<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
+		<div class="alert alert-success"
+			th:if="${!#strings.isEmpty(mensagem)}">
 			<span th:text="${mensagem}"></span>
 		</div>
 		<div class="card">
@@ -29,25 +32,27 @@
 
 				<div class="form-row">
 					<div class="form-group col-sm-5">
-						<label for="inputEmail4 control-label">DescriÃ§Ã£o</label> <input type="text" class="form-control"
-							id="descricao" name="descricao"></input>
+						<label for="inputEmail4 control-label">Descrição</label> <input
+							type="text" class="form-control" id="descricao" name="descricao"></input>
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-sm-3">
-						<label for="inputEmail4">Data de Vencimento</label> <input type="text" class="form-control"
-							id="dataVencimento" name="dataVencimento" />
+						<label for="inputEmail4">Data de Vencimento</label> <input
+							type="text" class="form-control" id="dataVencimento"
+							name="dataVencimento" />
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-sm-3">
-						<label for="number">valor</label> <input type="text" class="form-control" id="valor"
-							name="valor" />
+						<label for="number">valor</label> <input type="text"
+							class="form-control" id="valor" name="valor" />
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-sm-3">
-						<label for="status">Status</label> <select id="status" class="form-control" name="status">
+						<label for="status">Status</label> <select id="status"
+							class="form-control" name="status">
 							<option selected="selected">Escolher...</option>
 							<option th:each="status : ${todosOsTitulos}" th:value="${status}"
 								th:text="${status.descricao}"></option>
@@ -65,7 +70,7 @@
 			</div>
 		</div>
 	</form>
-</section>
+	</section>
 </body>
 
 </html>
