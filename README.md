@@ -5,7 +5,8 @@ Sistema simples de cobranca usando spring boot
  - Spring Boot 
  - Api Rest
  - Java
- - Html , Javascript e CSS
+ - Thymeleaf
+ - Html , Javascript , CSS e Bootstrap
  - JPA / Hibernate(Pesistencia)
  - H2 (Banco de Dados)
  - Maven
