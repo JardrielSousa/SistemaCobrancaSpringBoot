@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.algaworks.cobranca.model.StatusTitulo;
 import br.com.algaworks.cobranca.model.Titulo;
-import br.com.algaworks.cobranca.repository.Titulos;
+import br.com.algaworks.cobranca.repository.TitulosRepository;
 
 @Controller
 @RequestMapping(value = "/titulos")
@@ -47,7 +47,7 @@ public class TituloController {
 	public static String PESQUISA_TITULO = "home";
 	
 	@Autowired
-	private Titulos titulos;
+	private TitulosRepository titulos;
 	
 	@RequestMapping("/novo")
 	public ModelAndView novo() {

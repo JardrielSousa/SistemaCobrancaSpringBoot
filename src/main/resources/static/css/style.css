@@ -24,9 +24,14 @@
 	margin-left: 25px;
 	margin-right: 25px;
 }
+
+a{
+	text-decoration: none !important;
+}
 .onlinkPanel{
 	float: right;
 	margin-top: -35px;
+	text-decoration: none  !important;
 }
 .ontituloPanel{
 	float: left ;

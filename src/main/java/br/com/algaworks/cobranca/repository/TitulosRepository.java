@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.algaworks.cobranca.model.Titulo;
 
-public interface Titulos extends JpaRepository<Titulo, Long>{
+public interface TitulosRepository extends JpaRepository<Titulo, Long>{
 
 }
