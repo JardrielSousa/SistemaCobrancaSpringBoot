@@ -7,6 +7,8 @@ Sistema simples de cobranca usando spring boot
  - Java
  - Thymeleaf
  - Html , Javascript , CSS e Bootstrap
+ - Swagger( para documentação)
+ - JUnit e EasyMock ( testes unitários )
  - JPA / Hibernate(Pesistencia)
  - H2 (Banco de Dados)
  - Maven
