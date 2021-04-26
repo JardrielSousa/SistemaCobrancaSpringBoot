@@ -1,7 +1,7 @@
 # Sistema Cobranca Spring Boot
 Sistema simples de cobranca usando spring boot 
 
-## Tecnologias usadas:
+## Tecnologias e Ferramentas usadas:
  - Spring Boot 
  - Api Rest
  - Java
