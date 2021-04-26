@@ -34,7 +34,7 @@ public class Titulo {
 	
 	@NotNull(message = "Data de Nascimento é obrigatória")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="dd/MM/yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dataVencimento;
 	
 	@NotNull(message = "Valor é obrigatória ")

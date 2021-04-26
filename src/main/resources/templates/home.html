@@ -43,15 +43,19 @@
 				<tr th:each="titulo : ${titulo}">
 					<td class="text-center" th:text="${titulo.codigo}">1</td>
 					<td class="text-center" th:text="${titulo.descricao}">text</td>
-					<td class="text-center" th:text="${{titulo.dataVencimento}}">teste</td>
+					<td class="text-center" th:text="${#dates.format(titulo.dataVencimento, 'dd-MM-yyyy')}">teste</td>
 					<td class="text-center" th:text="${titulo.valor}">000</td>
 					<td class="text-center"><span class="label" th:text="${titulo.status.descricao}" th:classappend="${(titulo.pendente) ? 
 					'label-danger' : 'label-sucess'}"></span>
 					</td>
 					<td class="text-center">
-						<a class="btn btn-link btn-xs" th:href="@{/titulos/{codigo} (codigo=${titulo.codigo})}">
+						<a class="btn btn-link btn-xs" th:href="@{/titulos/{codigo}/{edit} (codigo=${titulo.codigo},edit=${true})}">
 							editar
+						</a>
+						<a class="btn btn-link btn-xs" th:href="@{/titulos/{codigo}/{edit} (codigo=${titulo.codigo},edit=${false})}">
+							deletar
 						</a></td>
+						
 				</tr>
 				<tr>
 					<th colspan="6" th:if="${#lists.isEmpty(titulo)}">Nenhum titulo

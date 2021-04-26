@@ -2,17 +2,15 @@ package br.com.algaworks.cobranca.controller;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -23,6 +21,15 @@ import br.com.algaworks.cobranca.repository.Titulos;
 @Controller
 @RequestMapping(value = "/titulos")
 public class TituloController {
+	
+	private static final String EDIT = "edit";
+	
+	private static final String DELECAO_TITULO = "DelecaoTitulo";
+
+	private static final String CODIGO = "codigo";
+
+	private static final String DELETADO_COM_SUCESSO = "Titulo Deletado com sucesso !";
+	
 	private static final String EDITADO_COM_SUCESSO = "Titulo editado com sucesso !";
 
 	private static final String CADASTRO_COM_SUCESSO = "Titulo Cadastrado com sucesso !";
@@ -34,12 +41,14 @@ public class TituloController {
 	private static final String REDIRECT_TITULOS = "redirect:/titulos/";
 
 	private static final String EDICAO_TITULO = "EdicaoTitulo";
-
+	
+	public static String CADASTRO_TITULO = "CadastroTitulo";
+	
+	public static String PESQUISA_TITULO = "home";
+	
 	@Autowired
 	private Titulos titulos;
 	
-	public static String CADASTRO_TITULO = "CadastroTitulo";
-	public static String PESQUISA_TITULO = "home";
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
 		ModelAndView mv = new ModelAndView(CADASTRO_TITULO);
@@ -64,19 +73,32 @@ public class TituloController {
 		mv.addObject("titulo", todosTitulos);
 		return mv;
 	}
-	@RequestMapping("{codigo}")
-	public ModelAndView edicao(@PathVariable("codigo") Titulo titulo) {
-		ModelAndView mv = new ModelAndView(EDICAO_TITULO);
+	@RequestMapping("{codigo}/{edit}")
+	public ModelAndView edicao(@PathVariable(CODIGO) Titulo titulo , @PathVariable(EDIT) Boolean edit) {
+		ModelAndView mv ;
+		if (edit) {
+			mv = new ModelAndView(EDICAO_TITULO);
+		}else {
+			mv = new ModelAndView(DELECAO_TITULO);
+		}
 		mv.addObject(titulo);
 		return mv;
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT,path = "/{codigo}")
-	public String editar (@ModelAttribute("codigo")  Titulo titulo,Errors erros,RedirectAttributes attributes ) {
+	public String editar (@ModelAttribute(CODIGO)  Titulo titulo,Errors erros,RedirectAttributes attributes ) {
 		titulos.saveAndFlush(titulo);
 		attributes.addFlashAttribute(MENSAGEM,EDITADO_COM_SUCESSO );
 		return REDIRECT_TITULOS;
 	}
+	
+	@RequestMapping(method = RequestMethod.DELETE,path = "/{codigo}")
+	public String deletar(@ModelAttribute(CODIGO)  Titulo titulo,Errors erros,RedirectAttributes attributes ) {
+		titulos.delete(titulo);
+		attributes.addFlashAttribute(MENSAGEM,DELETADO_COM_SUCESSO );
+		return REDIRECT_TITULOS;
+	}
+	
 	@ModelAttribute(TODOS_OS_TITULOS)
 	public List<StatusTitulo> todosStatusList(){
 		return Arrays.asList(StatusTitulo.values());

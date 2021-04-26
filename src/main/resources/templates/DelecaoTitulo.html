@@ -8,7 +8,7 @@
 	</meta>
 	<link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 	<link rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}" />
-	<title>Edição de Titulo</title>
+	<title>Deletar Titulo</title>
 </head>
 <header>
 	<nav class="navbar navbar-dark bg-dark">
@@ -18,67 +18,49 @@
 	</nav>
 </header>
 <section layout:fragment="conteudo">
-	<form class="form-horizontal" th:object="${titulo}" th:action="@{/titulos/{codigo}(codigo=${titulo.codigo})}" th:method="PUT">
-		<h1>Edição de Titulos</h1>
+	<form class="form-horizontal" th:object="${titulo}" th:action="@{/titulos/{codigo}(codigo=${titulo.codigo})}" th:method="DELETE">
+		<h1>Deletar Titulos</h1>
 		<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
 			<span th:text="${mensagem}"></span>
 		</div>
 		<div class="card">
-			<h5 class="card-header">Editar Titulo</h5>
+			<h5 class="card-header">Deletar Titulo</h5>
 			<div class="card-body">
 					<input hidden th:field="*{codigo}" name="codigo">
 					<div class="form-row" >
 						<div class="form-group col-sm-5">
 							<label for="inputEmail4 control-label">Descrição</label> 
-							<input type="text" th:field="*{descricao}" class="form-control" id="descricao" name="descricao"></input>
+							<input type="text" th:field="*{descricao}" class="form-control" id="descricao" name="descricao" disabled></input>
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-sm-3">
 							<label for="inputEmail4">Data de Vencimento</label>
-							<input type="date" th:field="*{dataVencimento}" class="form-control"	id="dataVencimento" name="dataVencimento" />
+							<input type="text" th:field="*{dataVencimento}" class="form-control"	id="dataVencimento" name="dataVencimento" disabled/>
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-sm-3">
 							<label for="number">valor</label>
 							<input type="text" th:field="*{valor}" class="form-control" id="valor"
-								name="valor" />
+								name="valor" disabled/>
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-sm-3">
 							<label for="status">Status</label> 
-							<select id="status"  th:object="${status}" class="form-control" name="status">
-								<option selected="selected">Escolher...</option>
+							<select id="status"  th:object="${status}" class="form-control" name="status" disabled>
+								<option selected="selected" >Escolher...</option>
 								<option th:each="status : ${todosOsTitulos}" th:value="${status}"
 									th:text="${status.descricao}"></option>
 							</select>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-primary">Editar</button>
+					<button type="submit" class="btn btn-danger">Deletar</button>
 					<a href="/titulos" class="btn">Cancelar</a>
 			</div>
 		</div>
 	</form>
-	<script>
-    $.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
-        icons: {
-            time: 'far fa-clock',
-            date: 'far fa-calendar',
-            up: 'fas fa-arrow-up',
-            down: 'fas fa-arrow-down',
-            previous: 'fas fa-chevron-left',
-            next: 'fas fa-chevron-right',
-            today: 'far fa-calendar-check-o',
-            clear: 'far fa-trash',
-            close: 'far fa-times'
-        } });
-
-    $('#datetimepicker1').datetimepicker({
-        format: 'DD/MM/YYYY h:mm A'
-    });
-</script>
 </section>
 </body>
 
